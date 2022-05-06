@@ -6,6 +6,9 @@
   "author": "KrisGum <krisgumularz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^7.0.4"
+    "husky": "^7.0.0"
+  },
+  "scripts": {
+    "prepare": "husky install"
   }
 }

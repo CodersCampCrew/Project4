@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import User from './user.interface';
 
-const users = [];
+export const users = [];
 
 @Injectable()
 export class AuthService {

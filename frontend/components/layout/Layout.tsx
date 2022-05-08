@@ -1,10 +1,14 @@
 import { Container, Stack } from "react-bootstrap";
+import MainNavigation from './MainNavigation'
 
 const Layout = ({ children }: any) => {
 	return (
-		<Container>
-			<Stack className='col-md-8 col-xl-6 mx-auto'>{children}</Stack>
-		</Container>
+		<>
+			<MainNavigation/>
+			<Container>
+				<Stack className="col-md-8 col-xl-6 mx-auto">{children}</Stack>
+			</Container>
+		</>
 	);
 };
 

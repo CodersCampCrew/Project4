@@ -49,7 +49,7 @@ export const RegisterForm = () => {
   const router = useRouter();
 
   const submitForm: SubmitHandler = async (data) => {
-    console.log(data);
+    userService.register(data);
     router.push("confirm");
   };
 

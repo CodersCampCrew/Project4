@@ -12,11 +12,11 @@ export class UserController {
 
   @Delete(':id')
   public delete(@Body() body) {
-    //
+    return true;
   }
 
   @Put(':id')
   public update(@Body() body) {
-    //
+    return true;
   }
 }

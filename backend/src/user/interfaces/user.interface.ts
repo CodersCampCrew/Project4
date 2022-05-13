@@ -1,17 +1,15 @@
 interface User {
-  _id: string;
-  firstName: string;
-  lastName: string;
+  _id?: string;
+  name: string;
+  username: string;
   email: string;
-  password: string;
   phone: string;
-  city: string;
-  role: UserRole;
-  areaCode: string;
+  password: string;
+  category: UserRole;
   emailToken: string;
   verifiedByEmail: boolean;
 }
 
 export default User;
 
-type UserRole = 'student' | 'tutor';
+export type UserRole = 'student' | 'tutor' | 'admin';

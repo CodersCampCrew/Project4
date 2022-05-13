@@ -1,6 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
-import { createUserDto } from 'src/user/dto/userDto';
-import { UserService } from 'src/user/user.service';
+import { createUserDto } from '../user/dto/userDto';
+import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 
 @Controller('auth') // router.use('/auth', constroller)

@@ -1,17 +1,16 @@
 import { Document } from 'mongoose';
-
-export interface User {
-  _id?: string;
-  name: string;
-  username: string;
-  email: string;
-  phone: string;
-  password: string;
-  category: UserRole;
-  emailToken: string;
-  verifiedByEmail: boolean;
+export interface IUser extends Document {
+  readonly _id?: string;
+  readonly name: string;
+  readonly username: string;
+  readonly email: string;
+  readonly phone: string;
+  readonly password: string;
+  readonly category: UserRole;
+  readonly emailToken: string;
+  readonly verifiedByEmail: boolean;
 }
 
-export default User;
+export default IUser;
 
 export type UserRole = 'student' | 'tutor' | 'admin';

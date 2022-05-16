@@ -10,7 +10,7 @@ export class AuthController {
     private readonly userService: UserService,
   ) {}
   @Post('register')
-  public register(@Body() body: createUserDto) {
+  public register(@Body() body: CreateUserDto) {
     return this.userService.createUser(body);
   }
 

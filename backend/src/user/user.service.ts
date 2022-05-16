@@ -4,6 +4,7 @@ import { Model } from 'mongoose';
 import { randomUUID } from 'crypto';
 import { CreateUserDto } from './dto/userDto';
 import { IUser } from './interfaces/user.interface';
+import * as bcrypt from 'bcrypt';
 
 @Injectable()
 export class UserService {
@@ -27,18 +28,27 @@ export class UserService {
 
     const emailToken = randomUUID();
 
+    const hashedPassword = await bcrypt.hash(createUserDto.password, 10);
+
     const newUser = new this.userModel({
       ...createUserDto,
+      password: hashedPassword,
       verifiedByEmail: false,
       emailToken: emailToken,
     });
 
-    this.users.push(user);
-
-    return user;
+    await newUser.save();
+    const userObject = newUser.toObject();
+    delete userObject.password;
+    return userObject;
   }
 
   public getUsers() {
-    return this.users;
+    return this.userModel.find({});
+  }
+  public getByUsernameOrEmail(emailOrUsername: string) {
+    return this.userModel.findOne({
+      $or: [{ email: emailOrUsername }, { username: emailOrUsername }],
+    });
   }
 }

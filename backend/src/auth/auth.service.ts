@@ -1,6 +1,7 @@
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from 'src/user/user.service';
 import * as bcrypt from 'bcrypt';
+import * as jwt from 'jsonwebtoken';
 import IUser from 'src/user/interfaces/user.interface';
 import { DateTime } from 'luxon';
 
@@ -28,32 +29,29 @@ export class AuthService {
       throw new UnauthorizedException('Invalid username or password');
     }
 
-    const TokenData = null;
+    const TokenData = this.generateAuthToken(user);
 
-    return;
+    return TokenData;
   }
 
   public resetPassword(emailToken: string) {
     return emailToken;
   }
 
-  // private generateAuthToken(user: IUser): TokenData {
-  //   const expiresAt = DateTime.utc().plus({ hour: 1 }).toJSDate();
-  //   const secret = process.env.JWT_SECRET;
-  //   const dataStoredInToken: DataStoredInToken = {
-  //     id: user._id,
-  //     userName: user.username,
-  //     userEmail: user.email,
-  //   };
+  private generateAuthToken(user: IUser): TokenData {
+    const expiresAt = DateTime.utc().plus({ hour: 1 }).toJSDate();
+    const secret = process.env.JWT_SECRET;
+    const dataStoredInToken: DataStoredInToken = {
+      id: user._id,
+      userName: user.username,
+      userEmail: user.email,
+    };
 
-  //   return {
-  //     token: jwt.sign(dataStoredInToken, secret as string, {
-  //       expiresIn: 60 * 60,
-  //     }),
-  //     expiresIn: expiresAt,
-  //   };
-  // }
-  // createCookie = (tokenData: TokenData) => {
-  //   return `Authorization=${tokenData.token}; HttpOnly; Max-Age=${tokenData.expiresIn}`;
-  // };
+    return {
+      token: jwt.sign(dataStoredInToken, secret as string, {
+        expiresIn: 60 * 60,
+      }),
+      expiresIn: expiresAt,
+    };
+  }
 }

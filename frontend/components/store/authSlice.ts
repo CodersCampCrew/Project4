@@ -1,21 +1,27 @@
 import { createSlice } from "@reduxjs/toolkit";
+import userService from "../../services/userService";
 
-const initialUser = () => {
-	const initialUser = localStorage.getItem("user");
-	return initialUser;
+
+
+const token = () => {
+	const token: string = JSON.stringify(localStorage.getItem("token"));
+	return token;
 };
+
+const userIsLoggedIn = !!token
 
 const authSlice = createSlice({
 	name: "auth",
-	initialState: { isLoggedIn: initialUser },
+	initialState: { isLoggedIn: userIsLoggedIn},
 	reducers: {
-		login: (state, action) => {
-			state.isLoggedIn = action.payload;
-			localStorage.setItem("user", JSON.stringify(action.payload));
+		login(state, action) {
+			state.isLoggedIn = true;
+			const response = userService.login
+			localStorage.setItem("token", JSON.stringify(action.payload));
 		},
-		logout: (state, action) => {
-			state.isLoggedIn = null;
-			localStorage.removeItem("user");
+		logout(state, action) {
+			state.isLoggedIn = false;
+			localStorage.removeItem("token");
 		},
 	},
 });

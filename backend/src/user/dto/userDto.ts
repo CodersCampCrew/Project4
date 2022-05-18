@@ -23,7 +23,6 @@ export class CreateUserDto {
 
   @IsString()
   @IsNotEmpty()
-  @MaxLength(15)
   @MinLength(5)
   readonly password: string;
 

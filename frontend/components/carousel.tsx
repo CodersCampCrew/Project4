@@ -19,7 +19,7 @@ const setDataToReturn = (e: ChangedEvent) => {
   console.log(e);
 };
 
-export const Carousel = ({ data }: string[]) => {
+export const Carousel = ({ data }: { data: string[] }) => {
   return (
     <>
       <Flicking

@@ -24,10 +24,7 @@ export class AuthController {
       body.username,
       body.password,
     );
-    res.cookie('authorization', TokenData.token, {
-      expires: TokenData.expiresIn,
-      httpOnly: true,
-    });
+    res.send(TokenData.token);
   }
 
   @Post('reset') // router.get('/login', (req, rest, next))

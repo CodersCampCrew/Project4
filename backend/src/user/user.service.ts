@@ -21,7 +21,7 @@ export class UserService {
         { username: createUserDto.username },
       ],
     });
-
+    console.log(exisitingUser);
     if (exisitingUser) {
       throw new ConflictException(`User name or email already taken`);
     }
@@ -38,6 +38,7 @@ export class UserService {
     });
 
     await newUser.save();
+    console.log(newUser);
     const userObject = newUser.toObject();
     delete userObject.password;
     return userObject;
@@ -59,7 +60,11 @@ export class UserService {
   public deletUser(id: string) {
     return this.userModel.findByIdAndDelete(id);
   }
-  public updateUser(id: string, updateUserDto: UpdateUserDto) {
-    return this.userModel.findByIdAndUpdate(id, updateUserDto);
+  public async updateUser(id: string, updateUserDto: UpdateUserDto) {
+    const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
+    return this.userModel.findByIdAndUpdate(id, {
+      ...updateUserDto,
+      password: hashedPassword,
+    });
   }
 }

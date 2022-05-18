@@ -1,28 +1,26 @@
-import React from "react";
-import { useForm, SubmitHandler } from "react-hook-form";
-import * as Yup from "yup";
-import { yupResolver } from "@hookform/resolvers/yup";
-import {
-  Alert,
-  Button,
-  Form,
-  FormControl,
-  FormGroup,
-  FormText,
-} from "react-bootstrap";
-import userService from "../services/userService";
-import { useRouter } from "next/router";
-import Link from "next/link";
+import React from 'react';
+import { useForm, SubmitHandler } from 'react-hook-form';
+import * as Yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
+import { Alert, Button, Form, FormControl, FormGroup } from 'react-bootstrap';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
+import { InferType } from 'yup';
+import { useDispatch } from 'react-redux';
+import { login } from '../store/authSlice';
+import { AnyAction } from '@reduxjs/toolkit';
 
 export const LoginForm = () => {
+  const dispatch = useDispatch();
+
   const initialState = {
-    name: "",
-    password: "",
+    email: '',
+    password: ''
   };
 
   const schema = Yup.object({
-    name: Yup.string().required("Nazwa użytkownika jest wymagana"),
-    password: Yup.string().required("Hasło jest wymagane"),
+    email: Yup.string().required('Nazwa użytkownika jest wymagana'),
+    password: Yup.string().required('Hasło jest wymagane')
   });
 
   type Props = InferType<typeof schema>;
@@ -30,15 +28,14 @@ export const LoginForm = () => {
   const {
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors }
   } = useForm<Props>({ resolver: yupResolver(schema) });
 
   const router = useRouter();
 
-  const submitForm: SubmitHandler = async (data) => {
-    userService.login(data);
-    console.log(data);
-    router.push("confirm");
+  const submitForm: SubmitHandler<Props> = async ({ email, password }) => {
+    dispatch(login({ email, password }) as unknown as AnyAction);
+    router.push('index');
   };
 
   return (
@@ -46,16 +43,16 @@ export const LoginForm = () => {
       className="text-center mt-3 w-100"
       onSubmit={handleSubmit(submitForm)}
     >
-      <FormGroup className="mb-3 d-flex" controlId="username">
+      <FormGroup className="mb-3 d-flex" controlId="email">
         <FormControl
           type="text"
           placeholder="Nazwa użytkownika"
-          autoComplete="username"
-          {...register("username")}
+          autoComplete="email"
+          {...register('email')}
         />
       </FormGroup>
-      {errors?.name?.message && (
-        <Alert variant="danger">{errors?.name?.message}</Alert>
+      {errors?.email?.message && (
+        <Alert variant="danger">{errors?.email?.message}</Alert>
       )}
 
       <FormGroup className="mb-5" controlId="password">
@@ -63,7 +60,7 @@ export const LoginForm = () => {
           type="password"
           placeholder="Hasło"
           autoComplete="current-password"
-          {...register("password")}
+          {...register('password')}
         />
       </FormGroup>
       {errors?.password?.message && (

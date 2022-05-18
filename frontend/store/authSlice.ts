@@ -7,7 +7,7 @@ const initialState = {
   user: userService.getTokenFromLocalStorage()
 };
 
-const login = createAsyncThunk(
+export const login = createAsyncThunk(
   'auth/login',
   async ({ email, password }: { email: string; password: string }) => {
     const response = await userService.login({ email, password });

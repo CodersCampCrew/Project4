@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import userService from '../services/userService';
 
 const initialState = {
-  loading: true,
+  loading: false,
   logged: false,
   user: userService.getTokenFromLocalStorage()
 };

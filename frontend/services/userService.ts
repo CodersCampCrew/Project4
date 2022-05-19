@@ -1,39 +1,42 @@
-import serverAPI from './serverAPI';
+import serverAPI from "./serverAPI";
 
 const userService = {
-  getTokenFromLocalStorage() {
-    const stringToken = localStorage.getItem('token');
+	getTokenFromLocalStorage() {
+		let stringToken;
+		if (typeof window !== "undefined") {
+			stringToken = localStorage.getItem("token");
+		}
 
-    if (stringToken) {
-      return JSON.parse(stringToken);
-    }
+		if (stringToken) {
+			return JSON.parse(stringToken);
+		}
 
-    return {};
-  },
+		return {};
+	},
 
-  async login(userData: { email: string; password: string }) {
-    const data = await serverAPI.post({
-      url: 'auth/login',
-      data: userData
-    });
+	async login(userData: { email: string; password: string }) {
+		const data = await serverAPI.post({
+			url: "auth/login",
+			data: userData,
+		});
 
-    localStorage.setItem('token', JSON.stringify(data));
+		localStorage.setItem("token", JSON.stringify(data));
 
-    return data;
-  },
+		return data;
+	},
 
-  async register(userData: {}) {
-    const data = await serverAPI.post({
-      url: 'auth/register',
-      data: userData
-    });
+	async register(userData: {}) {
+		const data = await serverAPI.post({
+			url: "auth/register",
+			data: userData,
+		});
 
-    return data;
-  },
+		return data;
+	},
 
-  logout() {
-    localStorage.removeItem('token');
-  }
+	logout() {
+		localStorage.removeItem("token");
+	},
 };
 
 export default userService;

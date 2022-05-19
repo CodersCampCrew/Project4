@@ -1,37 +1,32 @@
-import Navbar from 'react-bootstrap/Navbar'
-import Container from 'react-bootstrap/Container'
-import Nav from 'react-bootstrap/Nav'
-import NavDropdown from 'react-bootstrap/NavDropdown'
-import Link from 'next/link'
+import Navbar from "react-bootstrap/Navbar";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import NavDropdown from "react-bootstrap/NavDropdown";
+import Link from "next/link";
+import { useSelector } from "react-redux";
+import { AnyAction } from "@reduxjs/toolkit";
 
 const MainNavigation = () => {
-  return (
-    <Navbar collapseOnSelect expand="lg" bg='info' variant="dark">
-  <Container>
-  <Link href='/' passHref><Navbar.Brand>Project4</Navbar.Brand></Link>
-  <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-  <Navbar.Collapse id="responsive-navbar-nav">
-    <Nav className="me-auto">
-      <Nav.Link href="#features">Features</Nav.Link>
-      <Nav.Link href="#pricing">Pricing</Nav.Link>
-      <NavDropdown title="Dropdown" id="collasible-nav-dropdown">
-        <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
-        <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-        <NavDropdown.Divider />
-        <NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-      </NavDropdown>
-    </Nav>
-    <Nav>
-      <Nav.Link href="#deets">More deets</Nav.Link>
-      <Nav.Link eventKey={2} href="#memes">
-        Dank memes
-      </Nav.Link>
-    </Nav>
-  </Navbar.Collapse>
-  </Container>
-</Navbar>
-  );
-}
+	const { logged } = useSelector((state: AnyAction) => state.auth);
+
+	return (
+		<Navbar collapseOnSelect bg="info" variant="dark">
+			<Container>
+				<Link href="/" passHref>
+					<Navbar.Brand>Project4</Navbar.Brand>
+				</Link>
+				<Navbar.Toggle aria-controls="responsive-navbar-nav" />
+				<Navbar>
+					<Nav className="me-auto"></Nav>
+					{!logged && (
+						<Nav>
+							<Nav.Link href="login">Zaloguj się</Nav.Link>
+						</Nav>
+					)}
+				</Navbar>
+			</Container>
+		</Navbar>
+	);
+};
 
 export default MainNavigation;

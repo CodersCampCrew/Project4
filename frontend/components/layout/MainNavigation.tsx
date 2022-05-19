@@ -20,7 +20,8 @@ const MainNavigation = () => {
 					<Nav className="me-auto"></Nav>
 					{!logged && (
 						<Nav>
-							<Nav.Link href="login">Zaloguj się</Nav.Link>
+              <Link href='/login' passHref><Nav.Link>Zaloguj się</Nav.Link></Link>
+							
 						</Nav>
 					)}
 				</Navbar>

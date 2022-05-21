@@ -10,21 +10,26 @@ import {
   FormSelect,
 } from "react-bootstrap";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { useDispatch } from "react-redux";
 import * as Yup from "yup";
 import styles from "../../styles/addstudent/part1.module.css";
+import { saveFormData } from "../../store/addStudentSlice";
 
 const AddStudent = () => {
+  const dispatch = useDispatch();
   const initialState = {
     studentName: "",
     parentName: "",
-    kinShip: "",
+    kinship: "",
     studentPhone: "",
     parentPhone: "",
+    schoolType: "",
+    class: "",
   };
   const schema = Yup.object({
     studentName: Yup.string().required("Nazwa studenta jest wymagana"),
     parentName: Yup.string().required("Nazwa rodzica/opiekuna jest wymagana"),
-    kinShip: Yup.string()
+    kinship: Yup.string()
       .oneOf(
         ["Wujek", "Ciocia", "Mama", "Tata", "Brak"],
         "Należy wybrać jedną z poniższych opcji!"
@@ -33,6 +38,29 @@ const AddStudent = () => {
       .nullable(),
     studentPhone: Yup.string().required("Numer telefonu jest konieczny"),
     parentPhone: Yup.string().required("Hasło jest wymagane"),
+    schoolType: Yup.string()
+      .oneOf(
+        ["Podstawowa", "Średnia"],
+        "Należy wybrać jedną z poniższych opcji!"
+      )
+      .required("Należy wybrać opcję!")
+      .nullable(),
+    class: Yup.string()
+      .oneOf(
+        [
+          "Pierwsza",
+          "Druga",
+          "Trzecia",
+          "Czwarta",
+          "Piąta",
+          "Szósta",
+          "Siódma",
+          "Ósma",
+        ],
+        "Należy wybrać jedną z poniższych opcji!"
+      )
+      .required("Należy wybrać opcję!")
+      .nullable(),
   });
 
   type Props = InferType<typeof schema>;
@@ -46,10 +74,10 @@ const AddStudent = () => {
   const router = useRouter();
 
   const submitForm: SubmitHandler = async (data) => {
-    
-    router.push(
-      pathname: "part2",
-    );
+    // console.log(data);
+    // dispatch(saveFormData(data));
+    // router.push("part2");
+    console.log("asd");
   };
 
   return (
@@ -82,7 +110,7 @@ const AddStudent = () => {
       )}
 
       <FormGroup className="mb-3 d-flex">
-        <FormSelect autoComplete="kinShip" {...register("kinShip")}>
+        <FormSelect autoComplete="kinship" {...register("kinship")}>
           <option>Pokrewieństwo</option>
           <option>Wujek</option>
           <option>Ciocia</option>
@@ -91,20 +119,9 @@ const AddStudent = () => {
           <option>Brak</option>
         </FormSelect>
       </FormGroup>
-      {errors?.kinShip?.message && (
-        <Alert variant="danger">{errors?.kinShip?.message}</Alert>
+      {errors?.kinship?.message && (
+        <Alert variant="danger">{errors?.kinship?.message}</Alert>
       )}
-      {/* <FormGroup className="mb-3" controlId="kinShip">
-        <FormControl
-          type="kinShip"
-          placeholder="E-kinShip"
-          autoComplete="kinShip"
-          {...register("kinShip")}
-        />
-      </FormGroup> */}
-      {/* {errors?.kinShip?.message && (
-        <Alert variant="danger">{errors?.kinShip?.message}</Alert>
-      )} */}
 
       <FormGroup className="mb-3" controlId="studentPhone">
         <FormControl
@@ -128,6 +145,34 @@ const AddStudent = () => {
       </FormGroup>
       {errors?.parentPhone?.message && (
         <Alert variant="danger">{errors?.parentPhone?.message}</Alert>
+      )}
+
+      <FormGroup className="mb-3" controlId="schoolType">
+        <FormSelect autoComplete="schoolType" {...register("schoolType")}>
+          <option>Szkoła</option>
+          <option>Podstawowa</option>
+          <option>Średnia</option>
+        </FormSelect>
+      </FormGroup>
+      {errors?.schoolType?.message && (
+        <Alert variant="danger">{errors?.schoolType?.message}</Alert>
+      )}
+
+      <FormGroup className="mb-3" controlId="class">
+        <FormSelect autoComplete="class" {...register("class")}>
+          <option>Klasa</option>
+          <option>Pierwsza</option>
+          <option>Druga</option>
+          <option>Trzecia</option>
+          <option>Czwarta</option>
+          <option>Piąta</option>
+          <option>Szósta</option>
+          <option>Siódma</option>
+          <option>Ósma</option>
+        </FormSelect>
+      </FormGroup>
+      {errors?.class?.message && (
+        <Alert variant="danger">{errors?.class?.message}</Alert>
       )}
 
       <FormGroup>

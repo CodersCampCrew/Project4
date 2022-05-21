@@ -15,14 +15,21 @@ const updateTransform = (e: any) => {
     panel.element.style.transform = `translateZ(-${depth}px) rotateX(${rotateVal}deg)`;
   });
 };
-const setDataToReturn = (e: ChangedEvent) => {
-  console.log(e);
-};
 
-export const Carousel = ({ data }: { data: string[] }) => {
+export const Carousel = ({
+  data,
+  startIndex,
+}: {
+  data: string[];
+  startIndex: number;
+}) => {
+  const setDataToReturn = (e: ChangedEvent) => {
+    console.log(data[e.index]);
+  };
   return (
     <>
       <Flicking
+        defaultIndex={startIndex}
         horizontal={false}
         circular={true}
         onReady={updateTransform}

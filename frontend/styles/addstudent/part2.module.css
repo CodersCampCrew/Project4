@@ -1,5 +1,5 @@
-.asd {
-  margin-top: 500px;
+.carouselsContainer {
+  margin: 25px;
   position: relative;
   display: flex;
   height: 150px;
@@ -23,4 +23,8 @@
   width: 30%;
   display: flex;
   justify-content: center;
+}
+.input:checked + .label {
+  background-color: #575e64;
+  border: solid 5px #c0c4c7;
 }

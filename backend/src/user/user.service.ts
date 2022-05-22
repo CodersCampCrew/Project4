@@ -5,10 +5,14 @@ import { randomUUID } from 'crypto';
 import { CreateUserDto, UpdateUserDto } from './dto/userDto';
 import { IUser } from './interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('User') private userModel: Model<IUser>) {}
+  constructor(
+    @InjectModel('User') private userModel: Model<IUser>,
+    private mailService: MailService,
+  ) {}
 
   //private users: User[] = [];
 
@@ -39,6 +43,7 @@ export class UserService {
 
     await newUser.save();
     console.log(newUser);
+    await this.mailService.sendUserConfirmation(newUser, newUser.emailToken);
     const userObject = newUser.toObject();
     delete userObject.password;
     return userObject;

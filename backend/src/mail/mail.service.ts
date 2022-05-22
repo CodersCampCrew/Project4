@@ -1,4 +1,22 @@
 import { Injectable } from '@nestjs/common';
+import { MailerService } from '@nestjs-modules/mailer';
+import { IUser } from '../user/interfaces/user.interface';
 
 @Injectable()
-export class MailService {}
+export class MailService {
+  constructor(private mailerService: MailerService) {}
+
+  async sendUserConfirmation(user: IUser, emailToken: string) {
+    const url = `localhost:5000/auth/verifyEmail?token=${user.emailToken}`;
+
+    await this.mailerService.sendMail({
+      to: user.email,
+      from: '"Project-4-2 Support" <support@project42.com>',
+      template: './templates/passwordConfirmation',
+      context: {
+        token: emailToken,
+        url,
+      },
+    });
+  }
+}

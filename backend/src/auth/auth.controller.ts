@@ -1,17 +1,42 @@
-import { Body, Controller, Get, Post } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Param } from '@nestjs/common';
+import { CreateUserDto } from '../user/dto/userDto';
+import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
+import { Response } from 'express';
 
 @Controller('auth') // router.use('/auth', constroller)
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
-
+  constructor(
+    private readonly authService: AuthService,
+    private readonly userService: UserService,
+  ) {}
   @Post('register')
-  public register(@Body() body) {
-    return this.authService.register(body);
+  public register(@Body() body: CreateUserDto) {
+    return this.userService.createUser(body);
   }
 
-  @Get('login') // router.get('/login', (req, rest, next))
-  public login() {
-    return this.authService.login();
+  @Post('login') // router.get('/login', (req, rest, next))
+  public async login(
+    @Body() body: { username: string; password: string },
+    @Res({ passthrough: true }) res: Response,
+  ) {
+    const TokenData = await this.authService.login(
+      body.username,
+      body.password,
+    );
+    res.send(TokenData.token);
+  }
+
+  @Post('reset') // router.get('/login', (req, rest, next))
+  public resetPassword(@Body() body) {
+    return this.authService.resetPassword(body.emailToken);
+  }
+
+  @Post('verifyEmail:token')
+  public async verifyEmail(
+    @Body() body: CreateUserDto,
+    @Param('token') token: string,
+  ) {
+    return this.authService.verifyEmail(body, token);
   }
 }

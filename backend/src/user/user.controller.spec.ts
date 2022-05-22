@@ -1,19 +1,17 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
 import { MailModule } from '../mail/mail.module';
-import { UserService } from '../user/user.service';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { UserController } from './user.controller';
+import { UserService } from './user.service';
 
-describe('AuthController', () => {
-  let controller: AuthController;
+describe('UserController', () => {
+  let controller: UserController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [MailModule],
-      controllers: [AuthController],
+      controllers: [UserController],
       providers: [
-        AuthService,
         UserService,
         {
           provide: getModelToken('User'),
@@ -22,7 +20,7 @@ describe('AuthController', () => {
       ],
     }).compile();
 
-    controller = module.get<AuthController>(AuthController);
+    controller = module.get<UserController>(UserController);
   });
 
   it('should be defined', () => {

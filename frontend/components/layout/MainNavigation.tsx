@@ -10,7 +10,7 @@ const MainNavigation = () => {
 	const { logged } = useSelector((state: AnyAction) => state.auth);
 
 	return (
-		<Navbar collapseOnSelect bg="info" variant="dark">
+		<Navbar collapseOnSelect bg="primary" variant="dark">
 			<Container>
 				<Link href="/" passHref>
 					<Navbar.Brand>Project4</Navbar.Brand>

@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post, Res } from '@nestjs/common';
+import { Body, Controller, Get, Post, Res, Param } from '@nestjs/common';
 import { CreateUserDto } from '../user/dto/userDto';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
@@ -30,5 +30,13 @@ export class AuthController {
   @Post('reset') // router.get('/login', (req, rest, next))
   public resetPassword(@Body() body) {
     return this.authService.resetPassword(body.emailToken);
+  }
+
+  @Post('verifyEmail:token')
+  public async verifyEmail(
+    @Body() body: CreateUserDto,
+    @Param('token') token: string,
+  ) {
+    return this.authService.verifyEmail(body, token);
   }
 }

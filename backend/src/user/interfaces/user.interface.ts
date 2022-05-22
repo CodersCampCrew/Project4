@@ -8,7 +8,7 @@ export interface IUser extends Document {
   readonly password: string;
   readonly category: UserRole;
   readonly emailToken: string;
-  readonly verifiedByEmail: boolean;
+  verifiedByEmail: boolean;
 }
 
 export default IUser;

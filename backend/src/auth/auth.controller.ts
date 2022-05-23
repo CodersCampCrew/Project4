@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, Res, Param } from '@nestjs/common';
-import { CreateUserDto } from '../user/dto/userDto';
+import { Body, Controller, Get, Post, Res, Param, Put } from '@nestjs/common';
+import { CreateUserDto, UpdateUserDto } from '../user/dto/userDto';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { Response } from 'express';
@@ -17,11 +17,11 @@ export class AuthController {
 
   @Post('login') // router.get('/login', (req, rest, next))
   public async login(
-    @Body() body: { username: string; password: string },
+    @Body() body: { username: string; email: string; password: string },
     @Res({ passthrough: true }) res: Response,
   ) {
     const TokenData = await this.authService.login(
-      body.username,
+      body.username ? body.username : body.email,
       body.password,
     );
     res.send(TokenData.token);
@@ -32,11 +32,8 @@ export class AuthController {
     return this.authService.resetPassword(body.emailToken);
   }
 
-  @Post('verifyEmail:token')
-  public async verifyEmail(
-    @Body() body: CreateUserDto,
-    @Param('token') token: string,
-  ) {
-    return this.authService.verifyEmail(body, token);
+  @Put('verifyEmail/:token')
+  public async verifyEmail(@Param('token') token: string) {
+    return this.authService.verifyEmail(token);
   }
 }

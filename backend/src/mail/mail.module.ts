@@ -21,7 +21,7 @@ import { HandlebarsAdapter } from '@nestjs-modules/mailer/dist/adapters/handleba
         from: '"No reply from Project-4-2" <project42@example.com>',
       },
       template: {
-        dir: join(__dirname, 'templates'),
+        dir: join(__dirname, './templates'),
         adapter: new HandlebarsAdapter(),
         options: {
           strict: true,

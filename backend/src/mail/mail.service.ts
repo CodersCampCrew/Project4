@@ -2,8 +2,6 @@ import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import { IUser } from '../user/interfaces/user.interface';
-import { join } from 'path';
-
 @Injectable()
 export class MailService {
   constructor(private mailerService: MailerService) {}

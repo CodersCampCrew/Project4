@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
+import { join } from 'path';
 import { IUser } from '../user/interfaces/user.interface';
 
 @Injectable()
@@ -12,10 +13,11 @@ export class MailService {
     await this.mailerService.sendMail({
       to: user.email,
       from: '"Project-4-2 Support" <support@project42.com>',
-      template: './templates/passwordConfirmation',
+      template: join(__dirname, '/templates/passwordConfirmation'),
       context: {
         token: emailToken,
         url,
+        name: 'test',
       },
     });
   }

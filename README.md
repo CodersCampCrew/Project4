@@ -9,10 +9,10 @@
 - [Jędrzej Ratajczak](https://github.com/Nilphym)
 
 ### Contributors:
-## Backend Team:
+#### Backend Team:
 - [Krzysztof Gumularz](https://github.com/KrisGum)
 - [Przemysław Gajowczyk](https://github.com/Przemyslaw-G)
-## Frontend Team:
+#### Frontend Team:
 - [Marcin Kukułka](https://github.com/MarcinKukulka)
 - [Dawid Żłobecki](https://github.com/DawidZlobecki)
 

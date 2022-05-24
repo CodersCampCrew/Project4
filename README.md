@@ -1,4 +1,4 @@
-# Coders Camp 2021 (7th ed.) | Team project | TypeScript + React + NodeJS
+# Coders Camp 2021 (7th ed.) | Team project | TypeScript + NestJs + NextJS
 
 ## Team project 
 
@@ -9,15 +9,16 @@
 - [Jędrzej Ratajczak](https://github.com/Nilphym)
 
 ### Contributors:
-
+## Backend Team:
 - [Krzysztof Gumularz](https://github.com/KrisGum)
 - [Przemysław Gajowczyk](https://github.com/Przemyslaw-G)
+## Frontend Team:
 - [Marcin Kukułka](https://github.com/MarcinKukulka)
 - [Dawid Żłobecki](https://github.com/DawidZlobecki)
 
 ## Ukraine Helper 
 ---
- Projekt-4 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.    
+ Projekt42 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.    
 
  Prototype and Mockup of the project
 
@@ -38,9 +39,9 @@ The purpose of our application is to simplfy the hard work of teachers who teach
 ## FrontEnd
 Preview of our website:
 
-![Screenshot](.github/img/UH-Front1.jpg)
+![Screenshot](.github/img/P42-Front-1.jpg)
 
-![Screenshot](.github/img/UH-Front2.jpg)
+![Screenshot](.github/img/P42-Front-2.jpg)
 
 ## BackeEnd
 A sneak-peek of our app's server side:
@@ -67,6 +68,8 @@ A sneak-peek of our app's server side:
 
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white)
 ![TYPESCRIPT](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![NestJs](https://img.shields.io/badge/nestjs-%23E0234E.svg?style=for-the-badge&logo=nestjs&logoColor=white)
+![Next JS](https://img.shields.io/badge/Next-black?style=for-the-badge&logo=next.js&logoColor=white)
 
 
 And in addition, we also used:
@@ -76,8 +79,9 @@ And in addition, we also used:
 - react router dom
 - prettier
 - yup
-- joi
+- Redux Toolkit
 - GitHub Actions
+- Bootstrap
 - dotenv
 - axios
 - envalid

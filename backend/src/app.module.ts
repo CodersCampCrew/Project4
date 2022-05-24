@@ -1,4 +1,9 @@
-import { Module } from '@nestjs/common';
+import {
+  Module,
+  NestModule,
+  MiddlewareConsumer,
+  RequestMethod,
+} from '@nestjs/common';
 import 'dotenv/config';
 import { ConfigModule } from '@nestjs/config';
 import { AppController } from './app.controller';
@@ -9,6 +14,7 @@ import { MailService } from './mail/mail.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { MailModule } from './mail/mail.module';
 import { AppointmentModule } from './appointment/appointment.module';
+import { AuthMiddleware } from './middleware/auth.middleware';
 
 @Module({
   imports: [
@@ -22,4 +28,14 @@ import { AppointmentModule } from './appointment/appointment.module';
   controllers: [AppController],
   providers: [AppService, MailService],
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  configure(consumer: MiddlewareConsumer) {
+    consumer
+      .apply(AuthMiddleware)
+      .forRoutes(
+        { path: 'appointment', method: RequestMethod.POST },
+        { path: 'appointment', method: RequestMethod.GET },
+        { path: 'user', method: RequestMethod.GET },
+      );
+  }
+}

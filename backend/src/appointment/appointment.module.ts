@@ -4,6 +4,7 @@ import { AppointmentController } from './appointment.controller';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppointmentSchema } from './schemas/appointment.schema';
 import { MailerModule } from '@nestjs-modules/mailer';
+import { MailService } from 'src/mail/mail.service';
 @Module({
   imports: [
     MailerModule,
@@ -12,6 +13,6 @@ import { MailerModule } from '@nestjs-modules/mailer';
     ]),
   ],
   controllers: [AppointmentController],
-  providers: [AppointmentService],
+  providers: [AppointmentService, MailService],
 })
 export class AppointmentModule {}

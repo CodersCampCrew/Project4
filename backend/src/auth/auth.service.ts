@@ -7,16 +7,17 @@ import { DateTime } from 'luxon';
 import { UpdateUserDto } from '../user/dto/userDto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { type } from 'os';
 
 export interface TokenData {
   token: string;
   expiresIn: Date;
 }
-export interface DataStoredInToken {
+export type DataStoredInToken = {
   id: string;
   userName: string;
   userEmail: string;
-}
+};
 @Injectable()
 export class AuthService {
   constructor(

@@ -15,5 +15,5 @@ export interface IAppointment extends Document {
   readonly prize: string;
   readonly address: string;
   readonly isLessonRegular: boolean;
-  readonly weekDay: [];
+  readonly lessons: [];
 }

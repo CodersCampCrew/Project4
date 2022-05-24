@@ -9,14 +9,16 @@ export async function AuthMiddleware(
   res: Response,
   next: NextFunction,
 ) {
-  const authCookie = req.cookies?.TokenData;
+  const jwtToken = req.header('Authorization');
+
   const secret = process.env.JWT_SECRET;
   try {
     const verificationResponse = jwt.verify(
-      authCookie,
+      jwtToken,
       secret as string,
     ) as unknown as DataStoredInToken;
     const id = verificationResponse.id;
+    console.log(id);
     const user = await this.userModel.findById(id);
     if (user && user.verifiedByEmail) {
       req.user = user;

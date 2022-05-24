@@ -18,7 +18,7 @@ import {
 export class AppointmentController {
   constructor(private readonly appointmentService: AppointmentService) {}
 
-  @Post()
+  @Post('create')
   create(
     @Body() createAppointmentDto: CreateAppointmentDto,
     req: RequestWithUser,

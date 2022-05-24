@@ -35,7 +35,7 @@ export class Appointment {
   @Prop()
   isLessonRegular: boolean;
   @Prop()
-  weekDay: [];
+  lessons: [];
 }
 
 export const AppointmentSchema = SchemaFactory.createForClass(Appointment);

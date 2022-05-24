@@ -31,7 +31,7 @@ export class MailService {
       context: {
         name: appointment.studentName,
         teacher: appointment.teacherId,
-        lessonDate: appointment.weekDay,
+        lessonDate: appointment.lessons,
       },
     });
   }

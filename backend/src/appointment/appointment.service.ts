@@ -1,13 +1,33 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+
+import { MailService } from '../mail/mail.service';
+import RequestWithUser from '../middleware/requestwithcontext.interface';
 import {
   CreateAppointmentDto,
   UpdateAppointmentDto,
 } from './dto/appointment.dto';
+import { IAppointment } from './interfaces/appointment.interface';
 
 @Injectable()
 export class AppointmentService {
-  create(createAppointmentDto: CreateAppointmentDto) {
-    return 'This action adds a new appointment';
+  constructor(
+    @InjectModel('Appointment') private appointmentModel: Model<IAppointment>,
+    private mailService: MailService,
+  ) {}
+
+  public async createAppointment(
+    createAppointmentDto: CreateAppointmentDto,
+    req: RequestWithUser,
+  ) {
+    const newAppointment = new this.appointmentModel({
+      ...createAppointmentDto,
+      teacherId: req.cookies.TokenData.user_id,
+    });
+    await newAppointment.save();
+    await this.mailService.sendAppointmentInfo(newAppointment);
+    return newAppointment;
   }
 
   findAll() {

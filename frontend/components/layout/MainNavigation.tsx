@@ -6,12 +6,15 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { AnyAction } from "@reduxjs/toolkit";
 import userService from "../../services/userService";
+import { useRouter } from "next/router";
 
 const MainNavigation = () => {
 	const { user } = useSelector((state: AnyAction) => state.auth);
+	const router = useRouter();
 	const logoutHandler = () => {
-		userService.logout()
-	}
+		userService.logout();
+		router.push("/");
+	};
 
 	return (
 		<Navbar collapseOnSelect bg="primary" variant="dark">
@@ -29,20 +32,24 @@ const MainNavigation = () => {
 							</Link>
 						</Nav>
 					)}
-					{user &&<Navbar.Collapse id="responsive-navbar-nav">
-						<Nav className="me-auto">
-							<NavDropdown title="Menu" id="collasible-nav-dropdown">
-								<NavDropdown.Item href="#action/3.1">Dodaj zajęcia</NavDropdown.Item>
-								<NavDropdown.Item>
-									Kalendarz 
-								</NavDropdown.Item>
-								<NavDropdown.Divider />
-								<NavDropdown.Item onClick={logoutHandler}>
-									Wyloguj się
-								</NavDropdown.Item>
-							</NavDropdown>
-						</Nav>
-					</Navbar.Collapse>}
+					{user && (
+						<Navbar.Collapse id="responsive-navbar-nav">
+							<Nav className="me-auto">
+								<NavDropdown title="Menu" id="collasible-nav-dropdown">
+									<NavDropdown.Item>
+										<Link href="addStudent">Dodaj ucznia</Link>
+									</NavDropdown.Item>
+									<NavDropdown.Item>
+										<Link href="calendar">Kalendarz</Link>
+									</NavDropdown.Item>
+									<NavDropdown.Divider />
+									<NavDropdown.Item onClick={logoutHandler}>
+										Wyloguj się
+									</NavDropdown.Item>
+								</NavDropdown>
+							</Nav>
+						</Navbar.Collapse>
+					)}
 				</Navbar>
 			</Container>
 		</Navbar>

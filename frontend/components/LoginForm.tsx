@@ -46,7 +46,7 @@ export const LoginForm = () => {
 
 	const submitForm: SubmitHandler<Props> = async ({ email, password }) => {
 		dispatch(login({ email, password }) as unknown as AnyAction);
-		router.push("/");
+		router.push("calendar");
 	};
 
 	if (loading) {

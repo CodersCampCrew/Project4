@@ -21,7 +21,6 @@ const userService = {
 		});
 
 		localStorage.setItem("token", JSON.stringify(data));
-
 		return data;
 	},
 

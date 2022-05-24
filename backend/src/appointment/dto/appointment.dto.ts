@@ -4,10 +4,16 @@ import { IsNotEmpty, IsString } from 'class-validator';
 export class CreateAppointmentDto {
   @IsString()
   @IsNotEmpty()
+  readonly teacherId?: string;
+  @IsString()
+  @IsNotEmpty()
   readonly studentName: string;
   @IsString()
   @IsNotEmpty()
   readonly parentName: string;
+  @IsString()
+  @IsNotEmpty()
+  readonly studentEmail: string;
   @IsString()
   @IsNotEmpty()
   readonly kinship: string;
@@ -39,16 +45,7 @@ export class CreateAppointmentDto {
   readonly isLessonRegular: boolean;
   @IsString()
   @IsNotEmpty()
-  readonly weekDay: string;
-  @IsString()
-  @IsNotEmpty()
-  readonly timeOfLesson: string;
-  @IsString()
-  @IsNotEmpty()
-  readonly startHour: string;
-  @IsString()
-  @IsNotEmpty()
-  readonly startMinute: string;
+  readonly weekDay: [];
 }
 
 export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {}

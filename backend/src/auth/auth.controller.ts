@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post, Res, Param, Put } from '@nestjs/common';
-import { CreateUserDto, UpdateUserDto } from '../user/dto/userDto';
+import { Body, Controller, Post, Res, Param, Put } from '@nestjs/common';
+import { CreateUserDto } from '../user/dto/userDto';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import { Response } from 'express';

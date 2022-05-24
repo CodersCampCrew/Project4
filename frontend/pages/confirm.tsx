@@ -1,7 +1,9 @@
 import React from "react";
+import { Alert } from "react-bootstrap";
 
 const Confirm = () => {
-  return <h2>Potwierdź email</h2>;
+  return <Alert  className='mt-5 text-center'>Potwierdź email</Alert>
+  
 };
 
 export default Confirm

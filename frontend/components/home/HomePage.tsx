@@ -1,16 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
-import { useSelector } from "react-redux";
 import classes from "./HomePage.module.scss";
-import { AnyAction } from "@reduxjs/toolkit";
-import Register from "../../pages/register";
+
 
 const HomePage = () => {
-	const { logged } = useSelector((state: AnyAction) => state.auth);
 
-	if (logged) {
-		return <Register />;
-	}
 
 	return (
 		<div className={classes.card}>

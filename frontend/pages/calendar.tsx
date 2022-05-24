@@ -5,8 +5,8 @@ import { Alert } from "react-bootstrap";
 import Link from "next/link";
 
 const Calendar = () => {
-	const { logged } = useSelector((state: AnyAction) => state.auth);
-	if (logged) {
+	const { user } = useSelector((state: AnyAction) => state.auth);
+	if (user) {
 		return <CalendarComponent />;
 	} else {
 		return (

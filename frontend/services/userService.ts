@@ -4,7 +4,7 @@ const userService = {
 	getTokenFromLocalStorage() {
 		let stringToken;
 		if (typeof window !== "undefined") {
-			stringToken = localStorage.getItem("token");
+			return stringToken = localStorage.getItem("token");
 		}
 
 		if (stringToken) {

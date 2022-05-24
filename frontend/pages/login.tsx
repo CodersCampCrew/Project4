@@ -5,9 +5,9 @@ import { AnyAction } from "@reduxjs/toolkit";
 import Calendar from '../pages/calendar'
 
 const Login = () => {
-	const { logged } = useSelector((state: AnyAction) => state.auth);
+	const { user } = useSelector((state: AnyAction) => state.auth);
 
-	if (logged) {
+	if (user) {
 		return <Calendar/>
 	}
 

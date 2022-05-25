@@ -1,5 +1,6 @@
 import { PartialType } from '@nestjs/mapped-types';
 import { IsNotEmpty, IsString } from 'class-validator';
+import { Date } from 'mongoose';
 
 export class CreateAppointmentDto {
   @IsString()
@@ -41,7 +42,13 @@ export class CreateAppointmentDto {
   @IsNotEmpty()
   readonly isLessonRegular: boolean;
   @IsNotEmpty()
-  readonly lessons: [any];
+  readonly lessons: lessons[];
 }
 
 export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {}
+
+export class lessons {
+  title: string;
+  start: string;
+  end: string;
+}

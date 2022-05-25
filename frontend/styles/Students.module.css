@@ -1,0 +1,10 @@
+.addButton {
+  background-color: #ff8466;
+  border-color: #ff8466;
+  box-shadow: 0 0 5px #ff8466;
+}
+.editProfileButton {
+  background-color: #6966ff;
+  border-color: #6966ff;
+  box-shadow: 0 0 5px #6966ff;
+}

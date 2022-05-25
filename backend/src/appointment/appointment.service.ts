@@ -28,9 +28,11 @@ export class AppointmentService {
     const newAppointment = new this.appointmentModel({
       ...createAppointmentDto,
       teacherId: decodedToken.id,
+      teacherName: decodedToken.userName,
     });
     await newAppointment.save();
     await this.mailService.sendAppointmentInfo(newAppointment);
+    console.log(newAppointment);
     return newAppointment;
   }
 

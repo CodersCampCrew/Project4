@@ -1,53 +1,50 @@
 .card {
-	display: flex;
-	align-items: center;
-	flex-direction: column;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
 
-	&Heading {
-		font-size: 2.5rem;
-		margin-top: 2em;
-	}
+  &Heading {
+    font-size: 2.5rem;
+    margin-top: 2em;
+  }
 
-	&Text {
-		font-size: 1.3rem;
-		margin-bottom: 2em;
-	}
+  &Text {
+    font-size: 1.3rem;
+    margin-bottom: 2em;
+  }
 
-	&Body {
-		cursor: pointer;
+  &Body {
+    cursor: pointer;
     height: 320px;
-	}
+  }
 
-	.img {
+  .img {
     position: relative;
     display: block;
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-		object-fit: cover;
-		z-index: 1;
-	}
-	.circle {
-		position: relative;
-		right: 15%;
-		bottom: 170px;
-		width: 200px;
-		height: 200px;
-		border-radius: 50%;
-		
-		z-index: 0;
-	}
+    border-radius: 50%;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .circle {
+    position: relative;
+    right: 15%;
+    bottom: 170px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
 
-  .imgFix{
+    z-index: 0;
+  }
+
+  .imgFix {
     object-position: top;
   }
 
-  .circleGreen{
+  .circleGreen {
     background-color: #4dc189;
   }
 
-  .circleYellow{
-    background-color: #FDFFAD;
+  .circleYellow {
+    background-color: #fdffad;
   }
-
 }

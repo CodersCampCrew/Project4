@@ -9,6 +9,8 @@ export class Appointment {
   @Prop()
   teacherId: string;
   @Prop()
+  teacherName: string;
+  @Prop()
   studentName: string;
   @Prop()
   parentName: string;

@@ -6,6 +6,8 @@ import {
   Patch,
   Param,
   Delete,
+  Req,
+  Headers,
 } from '@nestjs/common';
 import RequestWithUser from '../middleware/requestwithcontext.interface';
 import { AppointmentService } from './appointment.service';
@@ -21,8 +23,10 @@ export class AppointmentController {
   @Post('create')
   create(
     @Body() createAppointmentDto: CreateAppointmentDto,
-    req: RequestWithUser,
+    @Req() req: RequestWithUser,
+    @Headers() headers,
   ) {
+    console.log(headers);
     return this.appointmentService.createAppointment(createAppointmentDto, req);
   }
 

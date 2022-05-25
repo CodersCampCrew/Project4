@@ -1,6 +1,6 @@
 # Coders Camp 2021 (7th ed.) | Team project | TypeScript + NestJS + NextJS
 
-## Team project 
+## Team project
 
 ---
 
@@ -20,23 +20,29 @@
 ---
 TeacherAssistant - is a propotype of an app for teachers which will allow them to manage their individual lessons with students and keep basic information about them.    
 
- Prototype and Mockup of the project
+---
+
+Projekt-4 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.
+
+Prototype and Mockup of the project
 
 [Prototype](https://www.figma.com/file/vJtscwVli3982GtRsOuUGZ/Untitled?node-id=0%3A1)
 
 [Mockup](https://www.figma.com/file/v6HGEfAb25OimFQPhXk9f3/Untitled?node-id=0%3A1)
 
 --
-## Demo 
+
+## Demo
 
 A demo version of the application is not yet available...
 
----    
+---
 
 ## Project idea and main objective 🔍
 
 The purpose of our application is to simplify the hard work of teachers who teach students individually. Its task is to facilitate the planning of classes as well as managing information about students as well as about the subject of classes, price, etc. In addiction, our app will send email to students about the scheduled classes and show the teacher calendar.
 ## FrontEnd
+
 Preview of our website:
 
 ![Screenshot](.github/img/Front1.jpg)
@@ -44,13 +50,12 @@ Preview of our website:
 ![Screenshot](.github/img/Front2.jpg)
 
 ## BackeEnd
+
 A sneak-peek of our app's server side:
 
 ![Screenshot](.github/img/Back1.jpg)
 
-
-
-### Used technologies ⚡
+## Used technologies ⚡
 
 ## FrontEnd
 

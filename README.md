@@ -1,4 +1,4 @@
-# Coders Camp 2021 (7th ed.) | Team project | TypeScript + NestJs + NextJS
+# Coders Camp 2021 (7th ed.) | Team project | TypeScript + NestJS + NextJS
 
 ## Team project 
 

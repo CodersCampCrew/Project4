@@ -11,7 +11,7 @@ const userService = {
       return JSON.parse(stringToken);
     }
 
-    return {};
+    return '';
   },
 
   async login(userData: { email: string; password: string }) {

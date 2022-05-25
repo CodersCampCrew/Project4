@@ -3,7 +3,7 @@ import userService from "../services/userService";
 
 const initialState = {
   loading: false,
-  logged: false,
+  logged: !!userService.getTokenFromLocalStorage() ,
   user: userService.getTokenFromLocalStorage(),
 };
 

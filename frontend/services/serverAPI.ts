@@ -7,8 +7,8 @@ const serverAPI = {
     const { data } = await axiosInstance.get(url);
     return data;
   },
-  async post({ url, data }: { url: string; data: {} }) {
-    const { data: fetchedData } = await axiosInstance.post(url, data);
+  async post({ url, data, headers }: { url: string; data: {}; headers: {} }) {
+    const { data: fetchedData } = await axiosInstance.post(url, data, {headers});
     return fetchedData;
   },
   async put({ url, data }: { url: string; data?: {} }) {

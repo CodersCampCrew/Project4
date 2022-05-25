@@ -1,5 +1,18 @@
 import serverAPI from "./serverAPI";
 
+const getTokenFromLocalStorage = () => {
+  let stringToken;
+  if (typeof window !== "undefined") {
+    stringToken = localStorage.getItem("token");
+  }
+
+  if (stringToken) {
+    return JSON.parse(stringToken);
+  }
+
+  return {};
+};
+
 const addStudentService = {
   async addStudent(addStudentData: {
     studentName: string;
@@ -20,6 +33,9 @@ const addStudentService = {
     const data = await serverAPI.post({
       url: "appointment/create",
       data: addStudentData,
+      headers: {
+        Authorization: `Bearer ${getTokenFromLocalStorage()}`,
+      },
     });
 
     return data;

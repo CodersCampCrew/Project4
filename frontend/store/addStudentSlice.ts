@@ -22,7 +22,7 @@ const initialState = {
   prizeTime: "60 min",
   prize: "50",
   address: "",
-  isLessonRegular: null,
+  isLessonRegular: false,
   lessons: [],
 };
 

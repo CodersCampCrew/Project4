@@ -22,9 +22,9 @@ export class AppointmentService {
     createAppointmentDto: CreateAppointmentDto,
     req: RequestWithUser,
   ) {
-    const jwtToken = req.header('Authorization').split(' ')[1];
+    const jwtToken = req.header('Authorization')?.split(' ')[1];
     const decodedToken = jwt.decode(jwtToken) as DataStoredInToken;
-
+    console.log(decodedToken, jwtToken);
     const newAppointment = new this.appointmentModel({
       ...createAppointmentDto,
       teacherId: decodedToken.id,

@@ -1,6 +1,6 @@
-import Modal from 'react-bootstrap/Modal'
-import Button from 'react-bootstrap/Button'
-const ModalCalendar =(props: any) => {
+import Modal from "react-bootstrap/Modal";
+import Button from "react-bootstrap/Button";
+const ModalCalendar = (props: any) => {
   return (
     <Modal
       {...props}
@@ -26,6 +26,6 @@ const ModalCalendar =(props: any) => {
       </Modal.Footer>
     </Modal>
   );
-}
+};
 
 export default ModalCalendar;

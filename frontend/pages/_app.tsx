@@ -9,15 +9,15 @@ import "@fullcalendar/timegrid/main.css";
 import { SSRProvider } from "react-bootstrap";
 
 function MyApp({ Component, pageProps }: AppProps) {
-	return (
-		<SSRProvider>
-			<Provider store={store}>
-				<Layout>
-					<Component {...pageProps} />
-				</Layout>
-			</Provider>
-		</SSRProvider>
-	);
+  return (
+    <SSRProvider>
+      <Provider store={store}>
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      </Provider>
+    </SSRProvider>
+  );
 }
 
 export default MyApp;

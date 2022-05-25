@@ -4,11 +4,7 @@ import userService from "../services/userService";
 const initialState = {
   loading: false,
   logged: false,
-<<<<<<< HEAD
-  user: userService.getTokenFromLocalStorage()
-=======
   user: userService.getTokenFromLocalStorage(),
->>>>>>> origin/dev
 };
 
 export const login = createAsyncThunk(

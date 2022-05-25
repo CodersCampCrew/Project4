@@ -1,11 +1,11 @@
 import serverAPI from "./serverAPI";
 
 const userService = {
-	getTokenFromLocalStorage() {
-		let stringToken;
-		if (typeof window !== "undefined") {
-			return stringToken = localStorage.getItem("token");
-		}
+  getTokenFromLocalStorage() {
+    let stringToken;
+    if (typeof window !== "undefined") {
+      return (stringToken = localStorage.getItem("token"));
+    }
 
     if (stringToken) {
       return JSON.parse(stringToken);
@@ -41,7 +41,7 @@ const userService = {
 
   async verifyEmail(token: string) {
     const data = await serverAPI.put({
-      url: `auth/verifyEmail/${token}`
+      url: `auth/verifyEmail/${token}`,
     });
     return data;
   },

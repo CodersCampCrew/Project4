@@ -5,11 +5,11 @@ import { AnyAction } from "@reduxjs/toolkit";
 import Calendar from "../pages/calendar";
 
 const Login = () => {
-	const { user } = useSelector((state: AnyAction) => state.auth);
+  const { user } = useSelector((state: AnyAction) => state.auth);
 
-	if (user) {
-		return <Calendar/>
-	}
+  if (user) {
+    return <Calendar />;
+  }
 
   return (
     <div className="d-flex flex-column align-items-center m-3">

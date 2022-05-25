@@ -44,10 +44,10 @@ export const LoginForm = () => {
 
   const router = useRouter();
 
-	const submitForm: SubmitHandler<Props> = async ({ email, password }) => {
-		dispatch(login({ email, password }) as unknown as AnyAction);
-		router.push("calendar");
-	};
+  const submitForm: SubmitHandler<Props> = async ({ email, password }) => {
+    dispatch(login({ email, password }) as unknown as AnyAction);
+    router.push("calendar");
+  };
 
   if (loading) {
     return <Spinner animation={"border"} />;

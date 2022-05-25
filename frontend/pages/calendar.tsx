@@ -5,16 +5,16 @@ import { Alert } from "react-bootstrap";
 import Link from "next/link";
 
 const Calendar = () => {
-	const { user } = useSelector((state: AnyAction) => state.auth);
-	if (user) {
-		return <CalendarComponent />;
-	} else {
-		return (
-			<Alert variant="warning">
-				Musisz być <Link href="/login">zalogowany</Link> aby zobaczyć tą stronę
-			</Alert>
-		);
-	}
+  const { user } = useSelector((state: AnyAction) => state.auth);
+  if (user) {
+    return <CalendarComponent />;
+  } else {
+    return (
+      <Alert variant="warning">
+        Musisz być <Link href="/login">zalogowany</Link> aby zobaczyć tą stronę
+      </Alert>
+    );
+  }
 };
 
 export default Calendar;

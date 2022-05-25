@@ -53,7 +53,7 @@ A sneak-peek of our app's server side:
 ## Used technologies ⚡
 
 ### FrontEnd
---- 
+---- 
 ![nestjs](https://cdn.svgporn.com/logos/nextjs.svg)
  
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
@@ -77,7 +77,7 @@ And in addition, in Frontend we also used:
 - yup
  
 ### BackeEnd
----
+----
 ![nestjs](https://cdn.svgporn.com/logos/nestjs.svg)
  
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)

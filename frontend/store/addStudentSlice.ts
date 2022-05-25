@@ -1,6 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import userService from "../services/userService";
-// day: week[action.payload.day],
 const week = {
   Poniedziałek: 0,
   Wtorek: 1,
@@ -23,7 +22,7 @@ const initialState = {
   prizeTime: "60 min",
   prize: "50",
   address: "",
-  isLessonRegular: null /*czy mozna true or false nadpisać?*/,
+  isLessonRegular: null,
   lessons: [],
 };
 

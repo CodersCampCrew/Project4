@@ -3,11 +3,13 @@ import { RegisterForm } from "../components/RegisterForm";
 import { AnyAction } from "@reduxjs/toolkit";
 import Calendar from "../pages/calendar";
 import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
 const Register = () => {
-  const { user } = useSelector((state: AnyAction) => state.auth);
+  const router = useRouter();
+  const { logged } = useSelector((state: AnyAction) => state.auth);
 
-  if (user) {
-    return <Calendar />;
+  if (logged) {
+    router.push("/calendar");
   }
   return (
     <div className="d-flex flex-column align-items-center m-3">

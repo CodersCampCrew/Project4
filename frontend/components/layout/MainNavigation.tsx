@@ -37,7 +37,7 @@ const MainNavigation = () => {
               <Nav className="me-auto">
                 <NavDropdown title="Menu" id="collasible-nav-dropdown">
                   <NavDropdown.Item>
-                    <Link href="addStudent">Dodaj ucznia</Link>
+                    <Link href="addStudent/part1">Dodaj ucznia</Link>
                   </NavDropdown.Item>
                   <NavDropdown.Item>
                     <Link href="calendar">Kalendarz</Link>

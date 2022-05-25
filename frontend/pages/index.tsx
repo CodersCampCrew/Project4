@@ -4,9 +4,9 @@ import HomePage from "../components/home/HomePage";
 import { AnyAction } from "@reduxjs/toolkit";
 import Calendar from "./calendar";
 const Home: NextPage = () => {
-  const { user } = useSelector((state: AnyAction) => state.auth);
+  const { logged } = useSelector((state: AnyAction) => state.auth);
 
-  if (!user) {
+  if (!logged) {
     return <HomePage />;
   } else {
     return <Calendar />;

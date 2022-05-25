@@ -54,7 +54,7 @@ A sneak-peek of our app's server side:
 ![Screenshot](.github/img/Back1.jpg)
 
 ## Used technologies ⚡
-
+---
 ### FrontEnd
 
 ![nestjs](https://cdn.svgporn.com/logos/nextjs.svg)

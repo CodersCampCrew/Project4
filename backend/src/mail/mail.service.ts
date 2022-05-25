@@ -2,17 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { MailerService } from '@nestjs-modules/mailer';
 import { join } from 'path';
 import { IUser } from '../user/interfaces/user.interface';
-<<<<<<< Updated upstream
 import { IAppointment } from '../appointment/interfaces/appointment.interface';
-=======
-
->>>>>>> Stashed changes
 @Injectable()
 export class MailService {
   constructor(private mailerService: MailerService) {}
 
   async sendUserConfirmation(user: IUser, emailToken: string) {
-    const url = `http://localhost:5000/auth/verifyEmail?token=${user.emailToken}`;
+    const url = `http://localhost:3000/verifyEmail?token=${user.emailToken}`;
 
     await this.mailerService.sendMail({
       to: user.email,
@@ -34,7 +30,7 @@ export class MailService {
       template: join(__dirname, './templates/lessonAppointment.hbs'),
       context: {
         name: appointment.studentName,
-        teacher: appointment.teacherId,
+        teacher: appointment.teacherName,
         lessonDate: appointment.lessons,
       },
     });

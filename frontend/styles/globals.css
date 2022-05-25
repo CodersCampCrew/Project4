@@ -16,3 +16,7 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.btn {
+  border-radius: 50px;
+}

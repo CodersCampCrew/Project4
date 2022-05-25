@@ -55,6 +55,7 @@ const AddStudent2 = () => {
   const submitForm: SubmitHandler = async (data) => {
     console.log(data);
     dispatch(saveFormData2(data));
+    router.push("part3");
   };
 
   return (

@@ -13,6 +13,7 @@ import {
 } from "react-bootstrap";
 import userService from "../services/userService";
 import { useRouter } from "next/router";
+import { InferType } from "yup";
 
 export const RegisterForm = () => {
   const initialState = {
@@ -48,7 +49,8 @@ export const RegisterForm = () => {
 
   const router = useRouter();
 
-  const submitForm: SubmitHandler = async (data) => {
+  const submitForm: SubmitHandler<Props> = async (data) => {
+    userService.register(data);
     router.push("confirm");
   };
 

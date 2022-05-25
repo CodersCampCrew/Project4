@@ -1,19 +1,21 @@
 import { getModelToken } from '@nestjs/mongoose';
 import { Test, TestingModule } from '@nestjs/testing';
-import { MailModule } from '../mail/mail.module';
 import { UserService } from '../user/user.service';
-import { AuthController } from './auth.controller';
-import { AuthService } from './auth.service';
+import { MailModule } from '../mail/mail.module';
+import { AppointmentService } from './appointment.service';
 
-describe('AuthController', () => {
-  let controller: AuthController;
+describe('AppointmentService', () => {
+  let service: AppointmentService;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [MailModule],
-      controllers: [AuthController],
       providers: [
-        AuthService,
+        AppointmentService,
+        {
+          provide: getModelToken('Appointment'),
+          useValue: {},
+        },
         UserService,
         {
           provide: getModelToken('User'),
@@ -22,10 +24,10 @@ describe('AuthController', () => {
       ],
     }).compile();
 
-    controller = module.get<AuthController>(AuthController);
+    service = module.get<AppointmentService>(AppointmentService);
   });
 
   it('should be defined', () => {
-    expect(controller).toBeDefined();
+    expect(service).toBeDefined();
   });
 });

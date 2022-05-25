@@ -5,23 +5,24 @@ import { randomUUID } from 'crypto';
 import { CreateUserDto, UpdateUserDto } from './dto/userDto';
 import { IUser } from './interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class UserService {
-  constructor(@InjectModel('User') private userModel: Model<IUser>) {}
+  constructor(
+    @InjectModel('User') private userModel: Model<IUser>,
+    private mailService: MailService,
+  ) {}
 
   //private users: User[] = [];
 
   public async createUser(createUserDto: CreateUserDto) {
-    console.log(createUserDto);
-
     const exisitingUser = await this.userModel.findOne({
       $or: [
         { email: createUserDto.email },
         { username: createUserDto.username },
       ],
     });
-
     if (exisitingUser) {
       throw new ConflictException(`User name or email already taken`);
     }
@@ -38,6 +39,7 @@ export class UserService {
     });
 
     await newUser.save();
+    await this.mailService.sendUserConfirmation(newUser, newUser.emailToken);
     const userObject = newUser.toObject();
     delete userObject.password;
     return userObject;
@@ -59,7 +61,11 @@ export class UserService {
   public deletUser(id: string) {
     return this.userModel.findByIdAndDelete(id);
   }
-  public updateUser(id: string, updateUserDto: UpdateUserDto) {
-    return this.userModel.findByIdAndUpdate(id, updateUserDto);
+  public async updateUser(id: string, updateUserDto: UpdateUserDto) {
+    const hashedPassword = await bcrypt.hash(updateUserDto.password, 10);
+    return this.userModel.findByIdAndUpdate(id, {
+      ...updateUserDto,
+      password: hashedPassword,
+    });
   }
 }

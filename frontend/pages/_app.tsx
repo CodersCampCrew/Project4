@@ -3,6 +3,10 @@ import { Provider } from "react-redux";
 import type { AppProps } from "next/app";
 import Layout from "../components/layout/Layout";
 import store from "../store/index";
+import '@fullcalendar/common/main.css'
+import '@fullcalendar/daygrid/main.css' 
+import '@fullcalendar/timegrid/main.css' 
+
 
 function MyApp({ Component, pageProps }: AppProps) {
 	return (

@@ -2,21 +2,28 @@ import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { UserService } from '../user/user.service';
 import * as bcrypt from 'bcrypt';
 import * as jwt from 'jsonwebtoken';
-import IUser from 'src/user/interfaces/user.interface';
+import IUser from '../user/interfaces/user.interface';
 import { DateTime } from 'luxon';
+import { UpdateUserDto } from '../user/dto/userDto';
+import { Model } from 'mongoose';
+import { InjectModel } from '@nestjs/mongoose';
+import { type } from 'os';
 
 export interface TokenData {
   token: string;
   expiresIn: Date;
 }
-export interface DataStoredInToken {
+export type DataStoredInToken = {
   id: string;
   userName: string;
   userEmail: string;
-}
+};
 @Injectable()
 export class AuthService {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    @InjectModel('User') private userModel: Model<IUser>,
+    private readonly userService: UserService,
+  ) {}
 
   public async login(emailOrUsername: string, password: string) {
     const user = await this.userService.getByUsernameOrEmail(emailOrUsername);
@@ -53,5 +60,14 @@ export class AuthService {
       }),
       expiresIn: expiresAt,
     };
+  }
+
+  public async verifyEmail(emailToken: string) {
+    const userToVerify = await this.userModel.findOneAndUpdate(
+      { emailToken },
+      { verifiedByEmail: true },
+      { new: true },
+    );
+    return userToVerify;
   }
 }

@@ -12,7 +12,7 @@ export class MailService {
 
     await this.mailerService.sendMail({
       to: user.email,
-      from: '"Project-4-2 Support" <support@project42.com>',
+      from: '"Teacher-Assistant" <support@teacherassistant.com>',
       template: join(__dirname, './templates/passwordConfirmation.hbs'),
       context: {
         token: emailToken,
@@ -24,14 +24,29 @@ export class MailService {
   }
 
   async sendAppointmentInfo(appointment: IAppointment) {
+    const daysOfWeek = {
+      0: 'Monday',
+      1: 'Tuesday',
+      2: 'Wednesday',
+      3: 'Thursday',
+      4: 'Friday',
+      5: 'Saturday',
+      6: 'Sunday',
+    };
+    const lessonsDetail = appointment.lessons
+      .map(
+        ({ day, startTime, duration }) =>
+          `Day: ${daysOfWeek[day]}, at ${startTime} for ${duration} minutes`,
+      )
+      .join('; ');
     await this.mailerService.sendMail({
       to: appointment.studentEmail,
-      from: '"Project-4-2 Support" <support@project42.com>',
+      from: '"Teacher-Assistant" <support@teacherassistant.com>',
       template: join(__dirname, './templates/lessonAppointment.hbs'),
       context: {
         name: appointment.studentName,
         teacher: appointment.teacherName,
-        lessonDate: appointment.lessons,
+        lesson: lessonsDetail,
       },
     });
   }

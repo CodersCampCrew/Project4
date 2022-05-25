@@ -22,8 +22,9 @@ export class AppointmentService {
     createAppointmentDto: CreateAppointmentDto,
     req: RequestWithUser,
   ) {
-    const jwtToken = req.header('Authorization')?.split(' ')[1];
+    const jwtToken = req.header('Authorization').split(' ')[1];
     const decodedToken = jwt.decode(jwtToken) as DataStoredInToken;
+
     const newAppointment = new this.appointmentModel({
       ...createAppointmentDto,
       teacherId: decodedToken.id,
@@ -31,6 +32,7 @@ export class AppointmentService {
     });
     await newAppointment.save();
     await this.mailService.sendAppointmentInfo(newAppointment);
+    console.log(newAppointment);
     return newAppointment;
   }
 
@@ -38,11 +40,8 @@ export class AppointmentService {
     return `This action returns all appointment`;
   }
 
-  async findOne(id: string) {
-    const myAppointment = await this.appointmentModel.findOne({
-      teacherId: id,
-    });
-    return myAppointment;
+  findOne(id: string) {
+    return `This action returns a #${id} appointment`;
   }
 
   update(id: string, updateAppointmentDto: UpdateAppointmentDto) {

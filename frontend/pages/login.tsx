@@ -3,12 +3,14 @@ import { useSelector } from "react-redux";
 import { LoginForm } from "../components/LoginForm";
 import { AnyAction } from "@reduxjs/toolkit";
 import Calendar from "../pages/calendar";
+import { useRouter } from "next/router";
 
 const Login = () => {
+  const router = useRouter()
   const { logged } = useSelector((state: AnyAction) => state.auth);
 
   if (logged) {
-    return <Calendar />;
+    router.push('/calendar');
   }
 
   return (

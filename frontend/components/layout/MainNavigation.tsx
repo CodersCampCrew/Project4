@@ -13,14 +13,17 @@ const MainNavigation = () => {
   const router = useRouter();
   const logoutHandler = () => {
     userService.logout();
-    router.push("/");
+    // router.push("/");
+		window.location.pathname = '/'
+
   };
 
   return (
     <Navbar collapseOnSelect bg="primary" variant="dark">
       <Container>
         <Link href="/" passHref>
-          <Navbar.Brand>Project4</Navbar.Brand>
+				
+          <Navbar.Brand><i className="bi bi-calendar3-week-fill"></i> Teacher-Assistant</Navbar.Brand>
         </Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar>

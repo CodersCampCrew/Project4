@@ -17,7 +17,7 @@ const userService = {
   async login(userData: { email: string; password: string }) {
     const data = await serverAPI.post({
       url: 'auth/login',
-      data: userData
+      data: userData,
     });
 
     localStorage.setItem('token', JSON.stringify(data));
@@ -44,6 +44,13 @@ const userService = {
       url: `auth/verifyEmail/${token}`
     });
     return data;
+  },
+
+  async getAppointment(){
+    const data = await serverAPI.get({
+      url: 'appointment'
+    })
+    return data
   }
 };
 

@@ -7,7 +7,7 @@ const serverAPI = {
     const { data } = await axiosInstance.get(url);
     return data;
   },
-  async post({ url, data, headers }: { url: string; data: {}; headers: {} }) {
+  async post({ url, data, headers }: { url: string; data: {}; headers?: {} }) {
     const { data: fetchedData } = await axiosInstance.post(url, data, {headers});
     return fetchedData;
   },

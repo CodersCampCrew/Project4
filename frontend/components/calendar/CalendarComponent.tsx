@@ -3,6 +3,7 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
+import userService from "../../services/userService";
 
 const events = [
   {
@@ -22,7 +23,9 @@ const events = [
 ];
 
 const CalendarComponent = () => {
-  useEffect(() => {}, []);
+  useEffect(() => {
+   
+  }, []);
 
   const renderEventContent = (eventInfo: any) => {
     return (

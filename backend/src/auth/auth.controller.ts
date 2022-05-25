@@ -1,5 +1,5 @@
 import { Body, Controller, Post, Res, Param, Put } from '@nestjs/common';
-import { CreateUserDto } from '../user/dto/userDto';
+import { CreateUserDto, LoginDto } from '../user/dto/userDto';
 import { UserService } from '../user/user.service';
 import { AuthService } from './auth.service';
 import {
@@ -26,7 +26,7 @@ export class AuthController {
   @Post('login') // router.get('/login', (req, rest, next))
   @ApiOkResponse({ description: 'User Login' })
   @ApiUnauthorizedResponse({ description: 'Invalid credential' })
-  @ApiBody({ type: CreateUserDto })
+  @ApiBody({ type: LoginDto })
   public async login(
     @Body() body: { username: string; email: string; password: string },
     @Res({ passthrough: true }) res: Response,

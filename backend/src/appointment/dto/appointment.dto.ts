@@ -48,7 +48,7 @@ export class CreateAppointmentDto {
 export class UpdateAppointmentDto extends PartialType(CreateAppointmentDto) {}
 
 export class lessons {
-  day: number;
-  startTime: string;
-  duration: string;
+  title: string;
+  start: string;
+  end: string;
 }

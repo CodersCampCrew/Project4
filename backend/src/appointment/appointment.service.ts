@@ -24,7 +24,6 @@ export class AppointmentService {
   ) {
     const jwtToken = req.header('Authorization')?.split(' ')[1];
     const decodedToken = jwt.decode(jwtToken) as DataStoredInToken;
-    console.log(decodedToken, jwtToken);
     const newAppointment = new this.appointmentModel({
       ...createAppointmentDto,
       teacherId: decodedToken.id,
@@ -39,8 +38,11 @@ export class AppointmentService {
     return `This action returns all appointment`;
   }
 
-  findOne(id: string) {
-    return `This action returns a #${id} appointment`;
+  async findOne(id: string) {
+    const myAppointment = await this.appointmentModel.findOne({
+      teacherId: id,
+    });
+    return myAppointment;
   }
 
   update(id: string, updateAppointmentDto: UpdateAppointmentDto) {

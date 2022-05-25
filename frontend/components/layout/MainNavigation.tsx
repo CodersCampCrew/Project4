@@ -9,7 +9,7 @@ import userService from "../../services/userService";
 import { useRouter } from "next/router";
 
 const MainNavigation = () => {
-  const { user } = useSelector((state: AnyAction) => state.auth);
+  const { logged } = useSelector((state: AnyAction) => state.auth);
   const router = useRouter();
   const logoutHandler = () => {
     userService.logout();
@@ -25,14 +25,14 @@ const MainNavigation = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar>
           <Nav className="me-auto"></Nav>
-          {!user && (
+          {!logged && (
             <Nav>
               <Link href="/login" passHref>
                 <Nav.Link>Zaloguj się</Nav.Link>
               </Link>
             </Nav>
           )}
-          {user && (
+          {logged && (
             <Navbar.Collapse id="responsive-navbar-nav">
               <Nav className="me-auto">
                 <NavDropdown title="Menu" id="collasible-nav-dropdown">

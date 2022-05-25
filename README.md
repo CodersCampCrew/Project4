@@ -52,7 +52,7 @@ A sneak-peek of our app's server side:
 
 ## Used technologies ⚡
 
-## FrontEnd
+### FrontEnd
  
 ![nestjs](https://cdn.svgporn.com/logos/nextjs.svg)
  
@@ -76,7 +76,7 @@ And in addition, in Frontend we also used:
 - Redux Toolkit
 - yup
  
-## BackeEnd
+### BackeEnd
  
 ![nestjs](https://cdn.svgporn.com/logos/nestjs.svg)
  

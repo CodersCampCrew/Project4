@@ -1,11 +1,11 @@
 import serverAPI from "./serverAPI";
 
 const userService = {
-  getTokenFromLocalStorage() {
-    let stringToken;
-    if (typeof window !== "undefined") {
-      stringToken = localStorage.getItem("token");
-    }
+	getTokenFromLocalStorage() {
+		let stringToken;
+		if (typeof window !== "undefined") {
+			return stringToken = localStorage.getItem("token");
+		}
 
     if (stringToken) {
       return JSON.parse(stringToken);

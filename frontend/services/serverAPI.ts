@@ -11,5 +11,9 @@ const serverAPI = {
     const { data: fetchedData } = await axiosInstance.post(url, data);
     return fetchedData;
   },
+  async put({ url, data }: { url: string; data?: {} }) {
+    const { data: fetchedData } = await axiosInstance.put(url, data);
+    return fetchedData;
+  },
 };
 export default serverAPI;

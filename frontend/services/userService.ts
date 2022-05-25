@@ -38,6 +38,13 @@ const userService = {
   logout() {
     localStorage.removeItem("token");
   },
+
+  async verifyEmail(token: string) {
+    const data = await serverAPI.put({
+      url: `auth/verifyEmail/${token}`
+    });
+    return data;
+  },
 };
 
 export default userService;

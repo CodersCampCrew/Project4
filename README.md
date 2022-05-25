@@ -1,6 +1,6 @@
 # Coders Camp 2021 (7th ed.) | Team project | TypeScript + React + NodeJS
 
-## Team project 
+## Team project
 
 ---
 
@@ -15,27 +15,32 @@
 - [Marcin Kukułka](https://github.com/MarcinKukulka)
 - [Dawid Żłobecki](https://github.com/DawidZlobecki)
 
-## Ukraine Helper 
----
- Projekt-4 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.    
+## Ukraine Helper
 
- Prototype and Mockup of the project
+---
+
+Projekt-4 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.
+
+Prototype and Mockup of the project
 
 [Prototype](https://www.figma.com/file/vJtscwVli3982GtRsOuUGZ/Untitled?node-id=0%3A1)
 
 [Mockup](https://www.figma.com/file/v6HGEfAb25OimFQPhXk9f3/Untitled?node-id=0%3A1)
 
 --
-## Demo 
+
+## Demo
 
 A demo version of the application is not yet available...
 
----    
+---
 
 ## Project idea and main objective 🔍
 
 The purpose of our application is to simplfy the hard work of teachers who teach students individually. Its task is to facilitate the planning of classes and their management of information about our students as well as information about the type of classes, price, etc.
+
 ## FrontEnd
+
 Preview of our website:
 
 ![Screenshot](.github/img/UH-Front1.jpg)
@@ -43,11 +48,10 @@ Preview of our website:
 ![Screenshot](.github/img/UH-Front2.jpg)
 
 ## BackeEnd
+
 A sneak-peek of our app's server side:
 
 ![Screenshot](.github/img/UH-Swagger.jpg)
-
-
 
 ## Used technologies ⚡
 
@@ -68,7 +72,6 @@ A sneak-peek of our app's server side:
 ![Swagger](https://img.shields.io/badge/Swagger-85EA2D?style=for-the-badge&logo=Swagger&logoColor=white)
 ![TYPESCRIPT](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
 
-
 And in addition, we also used:
 
 - nodemailer
@@ -81,4 +84,3 @@ And in addition, we also used:
 - dotenv
 - axios
 - envalid
-

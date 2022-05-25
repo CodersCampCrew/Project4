@@ -6,10 +6,12 @@
   "author": "KrisGum <krisgumularz@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "husky": "^7.0.0"
+    "husky": "^7.0.0",
+    "prettier": "^2.6.2"
   },
   "scripts": {
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "format": "prettier --write ."
   },
   "dependencies": {}
 }

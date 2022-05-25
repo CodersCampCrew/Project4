@@ -18,7 +18,7 @@
 
 ## Ukraine Helper 
 ---
-TeacherAssistant - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.    
+TeacherAssistant - is a propotype of an app for teachers which will allow them to manage their individual lessons with students and keep basic information about them.    
 
  Prototype and Mockup of the project
 

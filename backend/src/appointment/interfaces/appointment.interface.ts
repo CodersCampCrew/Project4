@@ -2,6 +2,7 @@ import { Document } from 'mongoose';
 export interface IAppointment extends Document {
   readonly _id?: string;
   readonly teacherId?: string;
+  readonly teacherName?: string;
   readonly studentName: string;
   readonly parentName: string;
   readonly studentEmail: string;

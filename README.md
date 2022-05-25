@@ -35,7 +35,7 @@ A demo version of the application is not yet available...
 
 ## Project idea and main objective 🔍
 
-The purpose of our application is to simplfy the hard work of teachers who teach students individually. Its task is to facilitate the planning of classes and their management of information about our students as well as information about the type of classes, price, etc.
+The purpose of our application is to simplify the hard work of teachers who teach students individually. Its task is to facilitate the planning of classes and their management of information about our students as well as information about the type of classes, price, etc. In addiction, our app will send email to student email with information about their lessons.
 ## FrontEnd
 Preview of our website:
 

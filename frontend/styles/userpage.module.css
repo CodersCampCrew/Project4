@@ -1,0 +1,25 @@
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.img {
+  position: relative;
+  display: block;
+  border-radius: 50%;
+  object-fit: cover;
+  z-index: 1;
+}
+.circle {
+  position: relative;
+  right: 15%;
+  bottom: 170px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+
+  z-index: 0;
+}
+.circleGreen {
+  background-color: #4dc189;
+}

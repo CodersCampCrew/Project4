@@ -17,6 +17,7 @@ import { saveFormData } from "../../store/addStudentSlice";
 
 const AddStudent = () => {
   const dispatch = useDispatch();
+  const router = useRouter();
   const initialState = {
     studentName: "",
     parentName: "",
@@ -29,6 +30,7 @@ const AddStudent = () => {
   const schema = Yup.object({
     studentName: Yup.string().required("Nazwa studenta jest wymagana"),
     parentName: Yup.string().required("Nazwa rodzica/opiekuna jest wymagana"),
+    studentEmail: Yup.string().required("Nazwa użytkownika jest wymagana"),
     kinship: Yup.string()
       .oneOf(
         ["Wujek", "Ciocia", "Mama", "Tata", "Brak"],
@@ -71,13 +73,10 @@ const AddStudent = () => {
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
 
-  const router = useRouter();
-
   const submitForm: SubmitHandler = async (data) => {
-    // console.log(data);
-    // dispatch(saveFormData(data));
-    // router.push("part2");
-    console.log("asd");
+    console.log(data);
+    dispatch(saveFormData(data));
+    router.push("part2");
   };
 
   return (
@@ -103,6 +102,18 @@ const AddStudent = () => {
           placeholder="Imię i Nazwisko rodzica"
           autoComplete="parentName"
           {...register("parentName")}
+        />
+      </FormGroup>
+      {errors?.parentName?.message && (
+        <Alert variant="danger">{errors?.parentName?.message}</Alert>
+      )}
+
+      <FormGroup className="mb-3 d-flex" controlId="studentEmail">
+        <FormControl
+          type="text"
+          placeholder="Email ucznia"
+          autoComplete="studentEmail"
+          {...register("studentEmail")}
         />
       </FormGroup>
       {errors?.parentName?.message && (

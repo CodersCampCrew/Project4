@@ -1,11 +1,12 @@
 import React from "react";
-import { minuteData, priceData } from "../../assets/carouselData";
+import { lessonTime, priceData } from "../../assets/carouselData";
 import { Carousel } from "../../components/carousel";
 import * as Yup from "yup";
 
 import styles from "../../styles/addstudent/part2.module.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { saveFormData2 } from "../../store/addStudentSlice";
 
 import {
   Alert,
@@ -18,8 +19,12 @@ import {
   FormSelect,
   InputGroup,
 } from "react-bootstrap";
+import Router, { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const AddStudent2 = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const initialState = {
     address: "",
     localization: "",
@@ -27,6 +32,8 @@ const AddStudent2 = () => {
 
   const schema = Yup.object({
     address: Yup.string().required("Należy wpisać adres!"),
+    prize: Yup.string().required("Należy wpisać adres!").default("50"),
+    prizeTime: Yup.string().required("Należy wpisać adres!").default("60 min"),
     localization: Yup.string()
       .oneOf(
         ["U nauczyciela", "U ucznia", "Na mieście"],
@@ -41,30 +48,41 @@ const AddStudent2 = () => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm<Props>({ resolver: yupResolver(schema) });
 
   const submitForm: SubmitHandler = async (data) => {
     console.log(data);
+    dispatch(saveFormData2(data));
   };
 
   return (
     <>
-      <div className={styles.carouselsContainer}>
-        <div className={styles.carouselContainer}>
-          <Carousel data={priceData} startIndex={9} />
-        </div>
-        <span className={styles.forSpan}>za</span>
-
-        <div className={styles.carouselContainer}>
-          <Carousel data={minuteData} startIndex={3} />
-        </div>
-      </div>
       <Form
         className="text-center mt-3 w-100"
         onSubmit={handleSubmit(submitForm)}
       >
-        <p>{errors.localization?.message}</p>
+        <div className={styles.carouselsContainer}>
+          <div className={styles.carouselContainer}>
+            <Carousel
+              data={priceData}
+              returnData={priceData}
+              startIndex={9}
+              onChange={(value) => setValue("prize", value)}
+            />
+          </div>
+          <span className={styles.forSpan}>za</span>
+
+          <div className={styles.carouselContainer}>
+            <Carousel
+              data={lessonTime}
+              returnData={lessonTime}
+              startIndex={3}
+              onChange={(value) => setValue("prizeTime", value)}
+            />
+          </div>
+        </div>
         <FormGroup className="d-flex align-items-center">
           <InputGroup className="d-flex flex-column m-3">
             <Form.Check.Input

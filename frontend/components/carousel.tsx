@@ -1,11 +1,10 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import styles from "../styles/asd.module.css";
 import Flicking, {
   ChangedEvent,
   ViewportSlot,
   WillChangeEvent,
 } from "@egjs/react-flicking";
-import { dummyasd } from "../styles/asdData";
 
 const updateTransform = (e: any) => {
   e.currentTarget.panels.forEach((panel: any) => {
@@ -18,13 +17,17 @@ const updateTransform = (e: any) => {
 
 export const Carousel = ({
   data,
+  returnData,
   startIndex,
+  onChange,
 }: {
   data: string[];
+  returnData: string[];
   startIndex: number;
+  onChange: (value: string) => void;
 }) => {
-  const setDataToReturn = (e: ChangedEvent) => {
-    console.log(data[e.index]);
+  const onChanged = (e: ChangedEvent) => {
+    onChange(returnData[e.index]);
   };
   return (
     <>
@@ -34,7 +37,7 @@ export const Carousel = ({
         circular={true}
         onReady={updateTransform}
         onMove={updateTransform}
-        onChanged={(e: ChangedEvent) => setDataToReturn(e)}
+        onChanged={onChanged}
       >
         {data.map((e: string) => {
           return (

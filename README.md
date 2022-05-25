@@ -80,7 +80,7 @@ And in addition, in Frontend we also used:
 - yup
  
 ### BackEnd
-----
+
 ![nestjs](https://cdn.svgporn.com/logos/nestjs.svg)
  
 ![MongoDB](https://img.shields.io/badge/MongoDB-4EA94B?style=for-the-badge&logo=mongodb&logoColor=white)

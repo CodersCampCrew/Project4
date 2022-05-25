@@ -79,7 +79,7 @@ And in addition, in Frontend we also used:
 - Redux Toolkit
 - yup
  
-### BackeEnd
+### BackEnd
 ----
 ![nestjs](https://cdn.svgporn.com/logos/nestjs.svg)
  

@@ -22,8 +22,6 @@ TeacherAssistant - is a propotype of an app for teachers which will allow them t
 
 ---
 
-Projekt-4 - is a propotype of an app for teachers which will allow to manage them their individual lessons with students and keep information basic information about them.
-
 Prototype and Mockup of the project
 
 [Prototype](https://www.figma.com/file/vJtscwVli3982GtRsOuUGZ/Untitled?node-id=0%3A1)

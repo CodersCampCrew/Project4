@@ -56,7 +56,17 @@ export class CreateAppointmentDto {
   @ApiProperty({ type: Boolean, description: 'isLessonRegular' })
   readonly isLessonRegular: boolean;
   @IsNotEmpty()
-  @ApiProperty({ type: Array, description: 'lessons' })
+  @ApiProperty({ type: Object, properties: {
+    day:{
+      type: 'number'
+    },
+    StartTime:{
+      type: 'string'
+    },
+    duration:{
+      type: 'string'
+    }
+  } })
   readonly lessons: lessons[];
 }
 

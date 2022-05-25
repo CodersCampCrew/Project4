@@ -16,7 +16,7 @@
 - [Marcin Kukułka](https://github.com/MarcinKukulka)
 - [Dawid Żłobecki](https://github.com/DawidZlobecki)
 
-## Ukraine Helper 
+## TeacherAssistant 
 ---
 TeacherAssistant - is a propotype of an app for teachers which will allow them to manage their individual lessons with students and keep basic information about them.    
 
@@ -39,14 +39,14 @@ The purpose of our application is to simplify the hard work of teachers who teac
 ## FrontEnd
 Preview of our website:
 
-![Screenshot](.github/img/P42-Front-1.jpg)
+![Screenshot](.github/img/Front1.jpg)
 
-![Screenshot](.github/img/P42-Front-2.jpg)
+![Screenshot](.github/img/Front2.jpg)
 
 ## BackeEnd
 A sneak-peek of our app's server side:
 
-![Screenshot](.github/img/UH-Swagger.jpg)
+![Screenshot](.github/img/Back1.jpg)
 
 
 

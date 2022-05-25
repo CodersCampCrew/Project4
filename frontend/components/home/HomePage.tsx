@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 import Link from "next/link";
 import classes from "./HomePage.module.scss";
 import { AnyAction } from "@reduxjs/toolkit";

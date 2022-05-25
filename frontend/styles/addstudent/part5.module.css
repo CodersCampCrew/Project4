@@ -1,0 +1,23 @@
+.carouselsContainer {
+  text-align: center;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  color: black;
+}
+.carouselContainer {
+  width: 30%;
+  display: flex;
+  justify-content: center;
+}
+.forSpan {
+  width: 50%;
+  border: solid 1px #444;
+  min-height: 25px;
+  text-align: center;
+  position: absolute;
+  text-align: center;
+}

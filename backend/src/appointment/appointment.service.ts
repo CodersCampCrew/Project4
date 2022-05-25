@@ -1,13 +1,39 @@
 import { Injectable } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model } from 'mongoose';
+import * as jwt from 'jsonwebtoken';
+import { MailService } from '../mail/mail.service';
+import RequestWithUser from '../middleware/requestwithcontext.interface';
 import {
   CreateAppointmentDto,
   UpdateAppointmentDto,
 } from './dto/appointment.dto';
+import { IAppointment } from './interfaces/appointment.interface';
+import { DataStoredInToken } from 'src/auth/auth.service';
 
 @Injectable()
 export class AppointmentService {
-  create(createAppointmentDto: CreateAppointmentDto) {
-    return 'This action adds a new appointment';
+  constructor(
+    @InjectModel('Appointment') private appointmentModel: Model<IAppointment>,
+    private mailService: MailService,
+  ) {}
+
+  public async createAppointment(
+    createAppointmentDto: CreateAppointmentDto,
+    req: RequestWithUser,
+  ) {
+    const jwtToken = req.header('Authorization').split(' ')[1];
+    const decodedToken = jwt.decode(jwtToken) as DataStoredInToken;
+
+    const newAppointment = new this.appointmentModel({
+      ...createAppointmentDto,
+      teacherId: decodedToken.id,
+      teacherName: decodedToken.userName,
+    });
+    await newAppointment.save();
+    await this.mailService.sendAppointmentInfo(newAppointment);
+    console.log(newAppointment);
+    return newAppointment;
   }
 
   findAll() {

@@ -7,16 +7,17 @@ import { DateTime } from 'luxon';
 import { UpdateUserDto } from '../user/dto/userDto';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
+import { type } from 'os';
 
 export interface TokenData {
   token: string;
   expiresIn: Date;
 }
-export interface DataStoredInToken {
+export type DataStoredInToken = {
   id: string;
   userName: string;
   userEmail: string;
-}
+};
 @Injectable()
 export class AuthService {
   constructor(
@@ -61,16 +62,12 @@ export class AuthService {
     };
   }
 
-  public async verifyEmail(user: UpdateUserDto, emailToken: string) {
-    const token = emailToken;
-    const userToVerify = await this.userModel.findOne({ emailToken: token });
-
-    if (userToVerify && !userToVerify.verifiedByEmail) {
-      const verifiedUser = new this.userModel({
-        ...UpdateUserDto,
-        verifiedByEmail: true,
-      });
-      await verifiedUser.save();
-    }
+  public async verifyEmail(emailToken: string) {
+    const userToVerify = await this.userModel.findOneAndUpdate(
+      { emailToken },
+      { verifiedByEmail: true },
+      { new: true },
+    );
+    return userToVerify;
   }
 }

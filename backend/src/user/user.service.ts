@@ -17,15 +17,12 @@ export class UserService {
   //private users: User[] = [];
 
   public async createUser(createUserDto: CreateUserDto) {
-    console.log(createUserDto);
-
     const exisitingUser = await this.userModel.findOne({
       $or: [
         { email: createUserDto.email },
         { username: createUserDto.username },
       ],
     });
-    console.log(exisitingUser);
     if (exisitingUser) {
       throw new ConflictException(`User name or email already taken`);
     }
@@ -42,7 +39,6 @@ export class UserService {
     });
 
     await newUser.save();
-    console.log(newUser);
     await this.mailService.sendUserConfirmation(newUser, newUser.emailToken);
     const userObject = newUser.toObject();
     delete userObject.password;

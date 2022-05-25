@@ -7,9 +7,15 @@ export type AppointmentDocument = IAppointment & Document;
 @Schema()
 export class Appointment {
   @Prop()
+  teacherId: string;
+  @Prop()
+  teacherName: string;
+  @Prop()
   studentName: string;
   @Prop()
   parentName: string;
+  @Prop()
+  studentEmail: string;
   @Prop()
   kinship: string;
   @Prop()
@@ -31,13 +37,7 @@ export class Appointment {
   @Prop()
   isLessonRegular: boolean;
   @Prop()
-  weekDay: string;
-  @Prop()
-  timeOfLesson: string;
-  @Prop()
-  startHour: string;
-  @Prop()
-  startMinute: string;
+  lessons: [];
 }
 
 export const AppointmentSchema = SchemaFactory.createForClass(Appointment);

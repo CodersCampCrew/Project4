@@ -1,8 +1,11 @@
 import { Document } from 'mongoose';
 export interface IAppointment extends Document {
   readonly _id?: string;
+  readonly teacherId?: string;
+  readonly teacherName?: string;
   readonly studentName: string;
   readonly parentName: string;
+  readonly studentEmail: string;
   readonly kinship: string;
   readonly studentPhone: string;
   readonly parentPhone: string;
@@ -13,8 +16,5 @@ export interface IAppointment extends Document {
   readonly prize: string;
   readonly address: string;
   readonly isLessonRegular: boolean;
-  readonly weekDay: string;
-  readonly timeOfLesson: string;
-  readonly startHour: string;
-  readonly startMinute: string;
+  readonly lessons: [];
 }
